@@ -13,8 +13,8 @@ db=client.test_database
 collection=client.test_collection
 posts=db.posts#creat new collection named posts
 #-----------------------------------------------------------------------------
-bot = telegram.Bot(token='410874515:AAGCRK5ybFuO8m9fYJN9u2jtEUgyajqJ6FU')
-updater = Updater(token='410874515:AAGCRK5ybFuO8m9fYJN9u2jtEUgyajqJ6FU')
+bot = telegram.Bot(token='TOKEN')
+updater = Updater(token='TOKEN')
 dispatcher = updater.dispatcher
 #-----------------------------------------------------------------------------
 def start(bot, update):
@@ -27,10 +27,8 @@ def echo(bot, update):#if command \findmessage entered this function finds messa
       global find1
       if find1==True:
               for post in posts.find({"id": update.message.chat_id}):
-                print(post["text"])
                 temp=post["text"]
                 if temp.find(update.message.text) > -1:
-                    print("oomadam")
                     bot.send_message(chat_id=update.message.chat_id, text=temp)
 
       else:
